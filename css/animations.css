@@ -1,0 +1,115 @@
+/* ==========================================================================
+   animations.css — Кастомные анимации (дополнение к AOS)
+   Los Santos Studio
+   ========================================================================== */
+
+/* Плавное появление шапки при скролле (ТЗ 5.2) */
+.header-scrolled {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(250, 238, 216, 0.98);
+}
+
+/* Hover-эффекты для карточек услуг */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(172, 42, 29, 0.15);
+}
+
+/* Hover-эффекты для остальных карточек */
+.price-card,
+.advantage-card,
+.review-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover,
+.advantage-card:hover,
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(6, 15, 12, 0.1);
+}
+
+/* Анимация бургер-меню */
+.burger-menu {
+  transition: transform 0.3s ease;
+}
+
+.burger-menu.active {
+  transform: translateX(-100%);
+}
+
+/* Пульсация иконки у преимущества при наведении */
+@keyframes icon-pop {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.advantage-card:hover .advantage-card__icon {
+  animation: icon-pop 0.5s ease;
+}
+
+/* Мягкое появление баннера cookie */
+@keyframes slide-in-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.cookie-banner.visible {
+  animation: slide-in-up 0.4s ease forwards;
+}
+
+/* Подпрыгивающая стрелка "скролл вниз" в hero */
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.hero__scroll-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 46px;
+  font-family: var(--font-accent);
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+}
+
+.hero__scroll-hint i {
+  color: var(--color-primary);
+  animation: bounce-down 1.6s ease infinite;
+}
+
+/* Уважение к настройкам пользователя */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

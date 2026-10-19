@@ -1,0 +1,142 @@
+/* ==========================================================================
+   responsive.css — Медиа-запросы (desktop-first подход)
+   Los Santos Studio
+   Планшеты: 768px–1199px | Мобильные: < 768px
+   ========================================================================== */
+
+/* ---------- Планшеты (768px – 1199px) ---------- */
+@media (max-width: 1199px) {
+  h1 {
+    font-size: 2.8rem;
+  }
+
+  h2 {
+    font-size: 2.1rem;
+  }
+
+  .section {
+    padding: 70px 0;
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .contacts__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-frame {
+    height: 360px;
+  }
+
+  .nav__list {
+    gap: 18px;
+  }
+}
+
+/* ---------- Мобильные (< 768px) ---------- */
+@media (max-width: 767px) {
+  h1 {
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+  }
+
+  .section {
+    padding: 54px 0;
+  }
+
+  .section__header {
+    margin-bottom: 36px;
+  }
+
+  /* Шапка: скрываем навигацию, показываем бургер */
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .header__cta {
+    display: none;
+  }
+
+  .header__logo img {
+    height: 44px;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 40px);
+    padding-bottom: 50px;
+  }
+
+  .hero__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Сетки в одну колонку */
+  .grid--3,
+  .grid--2x2 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .price-list {
+    grid-template-columns: 1fr;
+  }
+
+  .price-card {
+    padding: 18px 20px;
+  }
+
+  .service-card {
+    padding: 26px 22px;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Cookie-баннер */
+  .cookie-banner__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .cookie-banner .btn {
+    width: 100%;
+  }
+
+  /* Карта */
+  .map-frame {
+    height: 300px;
+  }
+}
