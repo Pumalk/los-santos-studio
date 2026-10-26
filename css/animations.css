@@ -108,6 +108,23 @@
   color: var(--color-primary);
 }
 
+.booking-step[data-aos] {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease, background-color 0.35s ease;
+}
+
+.booking-step[data-aos].aos-animate:hover,
+.booking-step[data-aos].aos-animate:focus-within {
+  transform: translateY(-5px);
+  border-color: color-mix(in srgb, var(--package-accent, #d7a066) 55%, transparent);
+  background-color: rgba(250, 238, 216, 0.09);
+}
+
+.faq-item summary:hover,
+.faq-item summary:focus-visible {
+  color: var(--color-primary);
+}
+
 .btn i,
 .social-btn i {
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);

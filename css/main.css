@@ -199,6 +199,10 @@ button:focus-visible {
   background: #efe2cb;
 }
 
+#faq {
+  background: var(--color-bg);
+}
+
 .section[id],
 .hero[id] {
   scroll-margin-top: calc(var(--header-height) + 20px);

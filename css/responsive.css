@@ -45,13 +45,33 @@
 }
 
 @media (max-width: 1023px) {
+  .nav__list {
+    gap: 12px;
+  }
+
+  .nav__link {
+    font-size: 0.88rem;
+  }
+
   .hero__layout {
-    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
-    gap: 32px;
+    grid-template-columns: minmax(0, 1fr) minmax(330px, 0.9fr);
+    gap: 26px;
   }
 
   .hero__title {
     font-size: clamp(2.7rem, 5vw, 3.6rem);
+  }
+
+  .booking-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-step {
+    min-height: 0;
+  }
+
+  .booking-step__number {
+    margin-bottom: 18px;
   }
 
   .service-packages {
@@ -81,7 +101,7 @@
   .section {
     display: block;
     min-height: auto;
-    padding: 54px 0;
+    padding: 58px 0;
   }
 
   .section__header {
@@ -108,8 +128,8 @@
   /* Hero */
   .hero {
     min-height: auto;
-    padding-top: calc(var(--header-height) + 34px);
-    padding-bottom: 42px;
+    padding-top: calc(var(--header-height) + 30px);
+    padding-bottom: 48px;
   }
 
   .hero__layout {
@@ -141,9 +161,10 @@
     align-items: stretch;
   }
 
-  .hero__phone {
+  .hero__primary-cta,
+  .hero__secondary-cta {
+    width: 100%;
     justify-content: center;
-    min-height: 48px;
   }
 
   .hero__note {
@@ -196,6 +217,18 @@
     align-items: stretch;
   }
 
+  .hero__proof {
+    display: grid;
+    gap: 8px;
+    margin-top: 22px;
+    padding-top: 15px;
+  }
+
+  .hero__note {
+    max-width: 38rem;
+    padding-bottom: 12px;
+  }
+
   /* Сетки в одну колонку */
   .grid--3,
   .grid--2x2 {
@@ -205,6 +238,7 @@
 
   .price-list {
     grid-template-columns: 1fr;
+    gap: 12px;
   }
 
   .price-card {
@@ -213,6 +247,24 @@
 
   .service-card {
     padding: 26px 22px;
+  }
+
+  .booking-steps {
+    gap: 12px;
+  }
+
+  .booking-step {
+    padding: 23px;
+  }
+
+  .faq-item summary {
+    padding: 19px 38px 19px 2px;
+    font-size: 1.08rem;
+  }
+
+  .faq-item p {
+    padding: 0 16px 20px 2px;
+    font-size: 0.94rem;
   }
 
   /* Footer */
@@ -229,5 +281,38 @@
   /* Карта */
   .map-frame {
     height: 300px;
+  }
+
+  body {
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+
+  .mobile-callbar {
+    position: fixed;
+    right: 14px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    left: 14px;
+    z-index: 950;
+    display: flex;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: var(--color-primary);
+    box-shadow: 0 8px 24px rgba(6, 15, 12, 0.25);
+    color: #fff;
+    font-size: 0.94rem;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 880px) {
+  .nav {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
   }
 }

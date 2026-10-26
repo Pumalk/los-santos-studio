@@ -42,7 +42,7 @@ python -m http.server 8000
 ## Сопровождение
 
 - **Галерея:** заменяйте `media/gallery/placeholder-*.jpg` реальными фотографиями работ (400×300, соотношение 4:3); оптимизируйте изображения перед публикацией.
-- **SEO перед запуском домена:** замените относительные `canonical`, `og:url`, `og:image` и `twitter:image` в `index.html` на абсолютные HTTPS URL основного домена; проверьте карточку `media/og-cover.png` (1200×630) в предпросмотре соцсетей.
+- **SEO перед запуском домена:** замените относительные `canonical`, `og:url`, `og:image` и `twitter:image` в `index.html` на абсолютные HTTPS URL основного домена; проверьте карточку `media/logo/og-cover.png` (1200×630) в предпросмотре соцсетей.
 - **Полноэкранная прокрутка:** на широких экранах секции используют мягкое прилипающее пролистывание; на телефонах и при `prefers-reduced-motion` сохраняется обычная прокрутка.
 - **Логотип:** `media/logo/logo-compressed.webp` размещается на кремовом фоне без дополнительных стилизаций.
 - **Проверка:** Chrome DevTools (Device Mode) и Lighthouse (Performance, Accessibility, SEO, Best Practices).
