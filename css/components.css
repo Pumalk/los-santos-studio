@@ -76,6 +76,152 @@
   font-size: 0.98rem;
 }
 
+.service-packages {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.service-card {
+  --package-accent: #d7a066;
+  position: relative;
+  perspective: 900px;
+  overflow: clip;
+  transform-style: preserve-3d;
+  display: flex;
+  min-height: 430px;
+  flex-direction: column;
+  padding: 30px;
+  border: 1px solid rgba(250, 238, 216, 0.1);
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at var(--pointer-x, 100%) var(--pointer-y, 0%), color-mix(in srgb, var(--package-accent) 20%, transparent), transparent 44%),
+    #101a17;
+  color: var(--color-bg);
+}
+
+.service-card--atmosphere {
+  --package-accent: #d87ca0;
+}
+
+.service-card--sound {
+  --package-accent: #8b9cd6;
+}
+
+.service-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.service-card__number {
+  color: rgba(250, 238, 216, 0.55);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.service-card__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  margin: 0;
+  border: 1px solid color-mix(in srgb, var(--package-accent) 42%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--package-accent) 12%, transparent);
+  color: var(--package-accent);
+  font-size: 18px;
+  transform: translateZ(28px);
+}
+
+.service-card__title {
+  margin-bottom: 4px;
+  color: var(--color-bg);
+  font-size: 2rem;
+  transform: translateZ(18px);
+}
+
+.service-card__lead {
+  margin-bottom: 14px;
+  color: var(--package-accent);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.service-card__text {
+  margin-bottom: 20px;
+  color: rgba(250, 238, 216, 0.72);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.service-card__features {
+  display: grid;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(250, 238, 216, 0.13);
+}
+
+.service-card__features li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(250, 238, 216, 0.88);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.service-card__features i {
+  color: var(--package-accent);
+  font-size: 0.68rem;
+}
+
+.service-card__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+  color: var(--color-bg);
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding-top: 14px;
+  border-top: 1px solid rgba(250, 238, 216, 0.13);
+}
+
+.service-card__link i {
+  color: var(--package-accent);
+  transition: transform 0.25s ease;
+}
+
+.service-card__link:hover i,
+.service-card__link:focus-visible i {
+  transform: translateX(4px);
+}
+
+.services__eyebrow {
+  justify-content: center;
+  margin-bottom: 8px;
+  color: var(--color-primary);
+}
+
+.services__note {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.services__note a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* ---------- Карточка цены ---------- */
 .price-card {
   display: flex;
@@ -95,6 +241,9 @@
 }
 
 .price-card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
   font-family: var(--font-heading);
   font-size: 1.6rem;
   font-weight: 700;
@@ -103,9 +252,9 @@
 }
 
 .price-card__value .price-card__from {
-  display: block;
+  display: inline;
   font-family: var(--font-body);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: var(--color-text-secondary);
   text-align: right;
@@ -119,6 +268,76 @@
 }
 
 .prices__cta {
+  text-align: center;
+}
+
+.prices__note {
+  max-width: 760px;
+  margin: -16px auto 26px;
+  color: rgba(250, 238, 216, 0.65);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+.booking-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.booking-step {
+  position: relative;
+  min-height: 250px;
+  padding: 28px;
+  border: 1px solid rgba(250, 238, 216, 0.14);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(250, 238, 216, 0.08), rgba(250, 238, 216, 0.025));
+  color: var(--color-bg);
+}
+
+.booking-step__number {
+  display: block;
+  margin-bottom: 35px;
+  color: var(--package-accent, #d7a066);
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.booking-step:nth-child(2) {
+  --package-accent: #d87ca0;
+}
+
+.booking-step:nth-child(3) {
+  --package-accent: #8b9cd6;
+}
+
+.booking-step__icon {
+  position: absolute;
+  top: 29px;
+  right: 27px;
+  color: var(--package-accent, #d7a066);
+  font-size: 1.35rem;
+}
+
+.booking-step h3 {
+  margin-bottom: 9px;
+  color: var(--color-bg);
+  font-size: 1.45rem;
+}
+
+.booking-step p {
+  color: rgba(250, 238, 216, 0.7);
+  font-size: 0.92rem;
+}
+
+.booking-steps__cta {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.reviews__cta {
+  margin-top: 32px;
   text-align: center;
 }
 
@@ -158,7 +377,9 @@
 /* ---------- Карточка галереи ---------- */
 .gallery-item {
   position: relative;
-  overflow: hidden;
+  perspective: 850px;
+  overflow: clip;
+  transform-style: preserve-3d;
   border-radius: 10px;
   border: 1px solid var(--color-border);
   background-color: #fff;
@@ -168,12 +389,14 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transform: translate3d(0, var(--gallery-scroll-depth, 0px), 22px) scale(1.08);
+  will-change: transform;
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .gallery-item:hover img,
 .gallery-item:focus-within img {
-  transform: scale(1.04);
+  transform: translate3d(0, var(--gallery-scroll-depth, 0px), 22px) scale(1.14);
 }
 
 .gallery-item__caption {
@@ -341,6 +564,7 @@
   height: 100%;
   border: 0;
   display: block;
+  pointer-events: auto;
 }
 
 /* Заглушка карты, если виджет 2ГИС недоступен */

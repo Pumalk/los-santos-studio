@@ -1,67 +1,56 @@
 # Los Santos Studio
 
-Одностраничный сайт автостудии по установке автозвука и дополнительного оборудования в Улан-Удэ. Статичный лендинг: HTML5 + CSS3 (без препроцессоров) + Vanilla JS.
+Одностраничный сайт автостудии по установке автозвука и дополнительного оборудования в Улан-Удэ. Статичный лендинг: HTML5, CSS3 и Vanilla JavaScript.
 
 ## Структура проекта
 
 ```
-├── index.html                # Главная страница
-├── css/                      # main / components / animations / responsive / docs
-├── js/                       # main.js, smooth-scroll.js, map-init.js
-├── libs/                     # Локальные копии AOS и Font Awesome 6 Free
-├── media/                    # logo/, favicon/, gallery/ (плейсхолдеры работ)
-├── docs/                     # privacy-policy, terms-of-use, cookie-policy
-├── sitemap.xml
-└── robots.txt
+├── index.html       # Главная страница
+├── css/             # Стили сайта
+├── js/              # Скрипты сайта
+├── libs/            # Локальные копии AOS и Font Awesome 6 Free
+└── media/           # Логотип, favicon и изображения галереи
 ```
 
 ## Локальный запуск
 
-Открыть `index.html` в браузере (например, через Live Server в VS Code), либо:
+Откройте `index.html` в браузере (например, через Live Server в VS Code) или запустите:
 
 ```bash
 python -m http.server 8000
 # открыть http://localhost:8000
 ```
 
-## Деплой на GitHub Pages
+## Публикация тестовой версии на GitHub Pages
 
-1. Создать репозиторий на GitHub и запушить все файлы:
-   ```bash
-   git init
-   git add .
-   git commit -m "Los Santos Studio: initial site"
-   git branch -M main
-   git remote add origin https://github.com/USERNAME/los-santos-studio.git
-   git push -u origin main
-   ```
-2. **Settings → Pages → Source:** Deploy from a branch → `main` → `/ (root)`.
-3. Сайт станет доступен по адресу `https://USERNAME.github.io/los-santos-studio/`.
+1. Откройте **Settings → Pages** репозитория.
+2. Выберите **Deploy from a branch**, ветку `main` и каталог `/ (root)`.
+3. Сохраните настройки и дождитесь публикации GitHub Pages.
 
-> **Важно для GitHub Pages под папкой репозитория:** все пути в проекте абсолютные (`/css/...`, `/media/...`). При деплое в `https://USERNAME.github.io/los-santos-studio/` замените префикс `/` на `/los-santos-studio/` во всех тегах `link/script/img` и в `site.webmanifest`, либо деплойте репозиторий как пользовательский сайт (`USERNAME.github.io`), где корень `/` работает сразу. После переезда на домен `los-santos-studio.ru` пути снова станут корректными без правок.
+Все локальные ссылки на ресурсы относительные, поэтому сайт работает и в корне пользовательского Pages-сайта, и в подпапке репозитория.
 
-## Переезд на домен los-santos-studio.ru
+## Что подготовить перед запуском основного сайта
 
-1. Зарегистрировать домен `los-santos-studio.ru`.
-2. **Settings → Pages → Custom domain:** указать `los-santos-studio.ru`.
-3. Настроить DNS у регистратора:
-   - `CNAME` для `@` → `USERNAME.github.io` (или ALIAS/ANAME, если поддерживается);
-   - 4 A-записи на IP GitHub Pages: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`.
-4. Включить **Enforce HTTPS** в настройках Pages.
-5. Обновить в коде: `canonical`, Open Graph `og:url`/`og:image`, JSON-LD `url`, контакты в `/docs/*` — они уже указывают на `https://los-santos-studio.ru`; при временном использовании GitHub Pages замените на фактический адрес.
-6. Обновить `sitemap.xml` (адреса в нём уже указаны для `los-santos-studio.ru`).
-7. Подтвердить права в Google Search Console и Яндекс.Вебмастере, отправить `sitemap.xml` на индексацию.
+- Купить домен, привязать его к выбранному хостингу, настроить DNS и включить HTTPS.
+- Указать production-адрес в `canonical`, Open Graph/Twitter, Schema.org и ссылках на изображения для превью.
+- Создать актуальные `robots.txt` и `sitemap.xml` с адресами опубликованных страниц и добавить sitemap в панели поисковых систем.
+- Подготовить и опубликовать актуальные документы о конфиденциальности и условиях использования с учётом реальных сервисов и собираемых данных.
+- Добавлять cookie-политику и баннер согласия только если на сайте появятся соответствующие cookies/аналитика и они потребуют такого согласия.
+- Проверить адрес, телефоны, цены, карту и ссылки; заменить изображения-плейсхолдеры на фотографии работ.
+- Проверить production-сборку на мобильных устройствах, работоспособность ссылок и доступность страниц; отправить сайт на индексацию в Google Search Console и Яндекс.Вебмастер.
 
 ## Сопровождение
 
-- **Замена плейсхолдеров галереи:** когда команда предоставит фото, замените файлы `/media/gallery/placeholder-*.jpg`, сохранив имена (400×300, соотношение 4:3). Перед коммитом оптимизируйте изображения через TinyPNG/ImageOptim.
-- **Логотип:** `/media/logo/logo-compressed.webp` размещается на кремовом фоне без дополнительных стилизаций.
-- **Тестирование:** Chrome DevTools (Device Mode) и Lighthouse (Performance, Accessibility, SEO, Best Practices). После релиза прогнать аудит на https://auditikk.ru.
+- **Галерея:** заменяйте `media/gallery/placeholder-*.jpg` реальными фотографиями работ (400×300, соотношение 4:3); оптимизируйте изображения перед публикацией.
+- **SEO перед запуском домена:** замените относительные `canonical`, `og:url`, `og:image` и `twitter:image` в `index.html` на абсолютные HTTPS URL основного домена; проверьте карточку `media/og-cover.png` (1200×630) в предпросмотре соцсетей.
+- **Полноэкранная прокрутка:** на широких экранах секции используют мягкое прилипающее пролистывание; на телефонах и при `prefers-reduced-motion` сохраняется обычная прокрутка.
+- **Логотип:** `media/logo/logo-compressed.webp` размещается на кремовом фоне без дополнительных стилизаций.
+- **Проверка:** Chrome DevTools (Device Mode) и Lighthouse (Performance, Accessibility, SEO, Best Practices).
 
 ## Лицензии используемых ресурсов
 
 - Шрифты Oswald, Inter, Caveat — Google Fonts, SIL Open Font License.
 - Иконки Font Awesome 6 Free — CC BY 4.0.
-- AOS (Animate On Scroll) — MIT License. Локальные копии в `/libs/aos/`.
+- AOS (Animate On Scroll) — MIT License. Локальная копия в `/libs/aos/`.
 
 © 2026 Los Santos Studio. Все права защищены.

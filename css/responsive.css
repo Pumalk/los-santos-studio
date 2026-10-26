@@ -15,6 +15,7 @@
   }
 
   .section {
+    min-height: 100svh;
     padding: 70px 0;
   }
 
@@ -37,6 +38,30 @@
   .nav__list {
     gap: 18px;
   }
+
+  .chapter-nav {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .hero__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+    gap: 32px;
+  }
+
+  .hero__title {
+    font-size: clamp(2.7rem, 5vw, 3.6rem);
+  }
+
+  .service-packages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .service-card:last-child {
+    grid-column: 1 / -1;
+    min-height: 380px;
+  }
 }
 
 /* ---------- Мобильные (< 768px) ---------- */
@@ -54,6 +79,8 @@
   }
 
   .section {
+    display: block;
+    min-height: auto;
     padding: 54px 0;
   }
 
@@ -81,8 +108,83 @@
   /* Hero */
   .hero {
     min-height: auto;
-    padding-top: calc(var(--header-height) + 40px);
-    padding-bottom: 50px;
+    padding-top: calc(var(--header-height) + 34px);
+    padding-bottom: 42px;
+  }
+
+  .hero__layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  .hero__content {
+    max-width: none;
+  }
+
+  .hero__eyebrow {
+    margin-bottom: 14px;
+    font-size: 0.68rem;
+  }
+
+  .hero__title {
+    margin-bottom: 16px;
+    font-size: clamp(2.55rem, 10vw, 3.5rem);
+  }
+
+  .hero__subtitle {
+    max-width: 540px;
+    margin-bottom: 22px;
+    font-size: 1rem;
+  }
+
+  .hero__buttons {
+    align-items: stretch;
+  }
+
+  .hero__phone {
+    justify-content: center;
+    min-height: 48px;
+  }
+
+  .hero__note {
+    margin-top: 16px;
+  }
+
+  .hero-showcase {
+    padding: 16px;
+  }
+
+  .hero-showcase__visual {
+    min-height: 190px;
+  }
+
+  .hero-showcase__item {
+    grid-template-columns: 24px 20px minmax(68px, 0.8fr) minmax(90px, 1.2fr) 12px;
+    gap: 6px;
+  }
+
+  .hero-showcase__item strong {
+    font-size: 0.85rem;
+  }
+
+  .hero-showcase__item small {
+    font-size: 0.59rem;
+  }
+
+  .service-packages {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .service-card,
+  .service-card:last-child {
+    min-height: 0;
+    grid-column: auto;
+    padding: 24px;
+  }
+
+  .service-card__top {
+    margin-bottom: 24px;
   }
 
   .hero__subtitle {
@@ -122,17 +224,6 @@
   .footer__bottom {
     flex-direction: column;
     gap: 8px;
-  }
-
-  /* Cookie-баннер */
-  .cookie-banner__inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .cookie-banner .btn {
-    width: 100%;
   }
 
   /* Карта */

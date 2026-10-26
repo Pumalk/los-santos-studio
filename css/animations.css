@@ -9,28 +9,115 @@
   background-color: rgba(250, 238, 216, 0.98);
 }
 
-/* Hover-эффекты для карточек услуг */
-.service-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Keep the 3D transforms active after AOS applies its reveal transform. */
+.hero-showcase[data-aos].aos-animate {
+  transform: perspective(1200px) rotateX(var(--scene-rotate-x, 0deg))
+    rotateY(var(--scene-rotate-y, 0deg));
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(172, 42, 29, 0.15);
+/* Hover-эффекты для карточек услуг */
+.service-card[data-aos] {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.service-card[data-aos].aos-animate:hover,
+.service-card[data-aos].aos-animate:focus-within {
+  transform: perspective(900px) rotateX(var(--card-rotate-x, 0deg))
+    rotateY(var(--card-rotate-y, 0deg)) translateY(-7px);
+  border-color: color-mix(in srgb, var(--package-accent) 52%, transparent);
+  box-shadow: 0 22px 42px rgba(6, 15, 12, 0.24),
+    0 0 26px color-mix(in srgb, var(--package-accent) 16%, transparent);
+}
+
+.service-card__icon {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease;
+}
+
+.service-card:hover .service-card__icon,
+.service-card:focus-within .service-card__icon {
+  transform: translate3d(0, -4px, 36px) rotate(-8deg) scale(1.08);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--package-accent) 24%, transparent);
 }
 
 /* Hover-эффекты для остальных карточек */
-.price-card,
-.advantage-card,
-.review-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.price-card[data-aos],
+.advantage-card[data-aos],
+.review-card[data-aos] {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.35s ease, border-color 0.35s ease;
 }
 
-.price-card:hover,
-.advantage-card:hover,
-.review-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(6, 15, 12, 0.1);
+.price-card[data-aos].aos-animate:hover,
+.advantage-card[data-aos].aos-animate:hover,
+.review-card[data-aos].aos-animate:hover,
+.price-card[data-aos].aos-animate:focus-within,
+.advantage-card[data-aos].aos-animate:focus-within,
+.review-card[data-aos].aos-animate:focus-within {
+  transform: perspective(900px) rotateX(var(--card-rotate-x, 0deg))
+    rotateY(var(--card-rotate-y, 0deg)) translateY(-6px);
+  border-color: rgba(172, 42, 29, 0.38);
+  box-shadow: 0 16px 32px rgba(6, 15, 12, 0.12);
+}
+
+.advantage-card__icon,
+.contact-item__icon {
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+    background-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.advantage-card:hover .advantage-card__icon,
+.advantage-card:focus-within .advantage-card__icon,
+.contact-item:hover .contact-item__icon {
+  transform: rotate(-8deg) scale(1.08);
+  background-color: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(172, 42, 29, 0.2);
+}
+
+.gallery-item[data-aos] {
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease;
+}
+
+.gallery-item[data-aos].aos-animate:hover,
+.gallery-item[data-aos].aos-animate:focus-within {
+  transform: perspective(850px) rotateX(var(--card-rotate-x, 0deg))
+    rotateY(var(--card-rotate-y, 0deg)) translateY(-6px);
+  box-shadow: 0 18px 34px rgba(6, 15, 12, 0.2);
+}
+
+.gallery-item img {
+  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1),
+    filter 0.5s ease;
+}
+
+.gallery-item:hover img,
+.gallery-item:focus-within img {
+  filter: saturate(1.08);
+}
+
+.gallery-item__caption {
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item__caption,
+.gallery-item:focus-within .gallery-item__caption {
+  background-color: #fffaf1;
+  color: var(--color-primary);
+}
+
+.btn i,
+.social-btn i {
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.btn:hover i,
+.btn:focus-visible i,
+.social-btn:hover i,
+.social-btn:focus-visible i {
+  transform: translateX(3px);
 }
 
 /* Анимация бургер-меню */
@@ -39,7 +126,7 @@
 }
 
 .burger-menu.active {
-  transform: translateX(-100%);
+  transform: translateX(0);
 }
 
 /* Пульсация иконки у преимущества при наведении */
@@ -57,20 +144,6 @@
 
 .advantage-card:hover .advantage-card__icon {
   animation: icon-pop 0.5s ease;
-}
-
-/* Мягкое появление баннера cookie */
-@keyframes slide-in-up {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.cookie-banner.visible {
-  animation: slide-in-up 0.4s ease forwards;
 }
 
 /* Подпрыгивающая стрелка "скролл вниз" в hero */
@@ -99,6 +172,43 @@
   animation: bounce-down 1.6s ease infinite;
 }
 
+@keyframes halo-breathe {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: translate3d(-50%, 0, -52px) scale(0.96);
+  }
+  50% {
+    opacity: 1;
+    transform: translate3d(-50%, 0, -52px) scale(1.04);
+  }
+}
+
+@keyframes dash-hover {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 24px) rotateX(-10deg) translateY(0);
+  }
+  50% {
+    transform: translate3d(0, -4px, 24px) rotateX(-10deg);
+  }
+}
+
+@keyframes sound-pulse {
+  from {
+    transform: scaleY(0.72);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes road-travel {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Уважение к настройкам пользователя */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -112,4 +222,42 @@
   html {
     scroll-behavior: auto;
   }
+
+  .hero-showcase {
+    transform: none;
+  }
+
+  .hero-showcase[data-aos].aos-animate {
+    transform: none;
+  }
+
+  .hero-showcase__visual {
+    transform: none;
+    will-change: auto;
+  }
+
+  .service-card[data-aos].aos-animate:hover,
+  .service-card[data-aos].aos-animate:focus-within,
+  .price-card[data-aos].aos-animate:hover,
+  .advantage-card[data-aos].aos-animate:hover,
+  .review-card[data-aos].aos-animate:hover,
+  .gallery-item[data-aos].aos-animate:hover,
+  .price-card[data-aos].aos-animate:focus-within,
+  .advantage-card[data-aos].aos-animate:focus-within,
+  .review-card[data-aos].aos-animate:focus-within,
+  .gallery-item[data-aos].aos-animate:focus-within {
+    transform: none;
+  }
+
+  .service-card__icon,
+  .service-card:hover .service-card__icon,
+  .service-card:focus-within .service-card__icon,
+  .service-card__title,
+  .gallery-item img,
+  .gallery-item:hover img,
+  .gallery-item:focus-within img {
+    transform: none;
+    will-change: auto;
+  }
+
 }
